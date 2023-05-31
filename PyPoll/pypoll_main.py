@@ -6,7 +6,7 @@ import os
 import csv
 
 #reading in a file
-pypoll_path = os.path.join('/','Resources','election_data.csv')
+pypoll_path = os.path.join('Resources','election_data.csv')
 
 with open(pypoll_path,encoding='utf') as pypoll_csv:   
     pypoll_reader = csv.reader(pypoll_csv,delimiter=',')
