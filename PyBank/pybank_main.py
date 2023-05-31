@@ -46,14 +46,15 @@ with open(pybankpath,encoding='utf') as pybank_csv:
 
     #in this loop I did total of difference between all row of column "prof_loss" and found total revnue change. Also found out max prof_loss change and min prof_loss change. 
     for i in range(1,len(prof_loss)):
+
         pl_change.append(prof_loss[i] - prof_loss[i-1])   
+        
         avg_pl_change = sum(pl_change)/len(pl_change)
 
         max_pl_change = max(pl_change)
+        max_pl_change_date = str(date[pl_change.index(max(pl_change))])
 
         min_pl_change = min(pl_change)
-
-        max_pl_change_date = str(date[pl_change.index(max(pl_change))])
         min_pl_change_date = str(date[pl_change.index(min(pl_change))])
 
 
