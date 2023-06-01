@@ -29,6 +29,8 @@ balot_id = [] #'Provit/Losses'
 country = []
 candidates = []
 
+
+
 # Read the csv and set it up as list dictionary
 with open(pypollpath,encoding='utf') as pypoll_csv: 
     pypollreader = csv.reader(pypoll_csv,delimiter=',')
@@ -44,35 +46,39 @@ with open(pypollpath,encoding='utf') as pypoll_csv:
         Stockham = []
         DeGette = []
         Doane = []
+    
+    total_votes = len(balot_id)
      # A complete list of candidates who received votes and the total number of votes each candidate won.
+    if candidates is not None:
         for row in candidates:
             if row == "Charles Casper Stockham":
                 Stockham.append(candidates)
-                votes_Stockham = len(Stockham)
+                
             elif row == "Diana DeGette":
                 DeGette.append(candidates)
-                votes_Degette= len(DeGette)
+                
             else:
                 Doane.append(candidates)
-                votes_Doane = len(Doane)
-
-    # The percentage of votes each candidate won.
-    p_stockholm = round(((votes_Stockham/ total_votes) * 100), 2)
+                
+    votes_Stockham = len(Stockham)
+    votes_Degette= len(DeGette)
+    votes_Doane = len(Doane)
+    p_Stockham = round(((votes_Stockham/ total_votes) * 100), 2)
     p_DeGette = round(((votes_Degette / total_votes) * 100), 2)
     p_Doane = round(((votes_Doane / total_votes) * 100), 2)
+
+    print ("Election Results")
+    print("---------------------------------------------")
+    print("Total Votes: ", total_votes)                
+    print(f"Stockham: %{p_Stockham} ({votes_Stockham})")
+    print(f"DeGette: %{p_DeGette} ({votes_Degette})")
+    print(f"Doane: %{p_Doane} ({votes_Doane})")
+
+    # The percentage of votes each candidate won.
 
     # The winner of the election based on popular vote.
     def winner(candidates):
         return max(set(candidates), key = candidates.count)
-    
-    print ("Election Results")
-    print("---------------------------------------------")
-    total_votes = len(balot_id)
-    print("Total Votes: ", total_votes)
 
-    # print("Avereage Change: $", round(avg_pl_change))
-    # print("Greatest Increase in Profits:", max_pl_change_date,"($", round(max_pl_change),")")
-    # # print("Greatest Decrease in Profits:", min_pl_change_date,"($", round(min_pl_change),")")
-    
     # print("Winner:", min_pl_change_date,"($", round(min_pl_change),")")
     print(candidates)
