@@ -24,6 +24,11 @@ import csv
 
 pypollpath = os.path.join('Resources','election_data.csv')
 
+#Set up lists 
+balot_id = [] #'Provit/Losses'
+country = []
+candidates = []
+
 # Read the csv and set it up as list dictionary
 with open(pypollpath,encoding='utf') as pypoll_csv: 
     pypollreader = csv.reader(pypoll_csv,delimiter=',')
@@ -31,37 +36,43 @@ with open(pypollpath,encoding='utf') as pypoll_csv:
     # skip first row using next
     next(pypollreader) 
 
-    #Set up lists 
-    balot_id = [] #'Provit/Losses'
-    country = []
-    candidtates = []
-
-    # read each row into columns
+    # read each row into columns/ used excel to confirm candidates. 
     for row in pypollreader:
         balot_id.append(row[0])
         country = [].append(row[1])
-        candidtates = [].append(row[2])
+        candidates = [].append(row[2])
+        Stockham = []
+        DeGette = []
+        Doane = []
+     # A complete list of candidates who received votes and the total number of votes each candidate won.
+        for row in candidates:
+            if row == "Charles Casper Stockham":
+                Stockham.append(candidates)
+                votes_Stockham = len(Stockham)
+            elif row == "Diana DeGette":
+                DeGette.append(candidates)
+                votes_Degette= len(DeGette)
+            else:
+                Doane.append(candidates)
+                votes_Doane = len(Doane)
 
+    # The percentage of votes each candidate won.
+    p_stockholm = round(((votes_Stockham/ total_votes) * 100), 2)
+    p_DeGette = round(((votes_Degette / total_votes) * 100), 2)
+    p_Doane = round(((votes_Doane / total_votes) * 100), 2)
+
+    # The winner of the election based on popular vote.
+    def winner(candidates):
+        return max(set(candidates), key = candidates.count)
+    
     print ("Election Results")
     print("---------------------------------------------")
-    print("Total Votes: ", len(balot_id))
-
-    # for i in range(1,len(prof_loss)):
-
-    #     pl_change.append(prof_loss[i] - prof_loss[i-1])   
-        
-    #     avg_pl_change = sum(pl_change)/len(pl_change)
-
-    #     max_pl_change = max(pl_change)
-    #     max_pl_change_date = str(date[pl_change.index(max(pl_change))])
-
-    #     min_pl_change = min(pl_change)
-    #     min_pl_change_date = str(date[pl_change.index(min(pl_change))])
-
+    total_votes = len(balot_id)
+    print("Total Votes: ", total_votes)
 
     # print("Avereage Change: $", round(avg_pl_change))
     # print("Greatest Increase in Profits:", max_pl_change_date,"($", round(max_pl_change),")")
     # # print("Greatest Decrease in Profits:", min_pl_change_date,"($", round(min_pl_change),")")
     
     # print("Winner:", min_pl_change_date,"($", round(min_pl_change),")")
-    print(candidtates)
+    print(candidates)
