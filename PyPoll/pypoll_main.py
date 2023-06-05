@@ -5,7 +5,7 @@ import os
 import csv
 
 #list total_votes
-total_total_votes = []
+total_votes = []
 
 #dictionary for each row
 canidate_total_votes = {}
@@ -27,8 +27,10 @@ with open(pypoll_path) as pypoll_csv:
 
     #-------read for total_votes
     for csvrow in csvreader:
+            
             total_votes.append(csvrow[1])
             total_votes = len(total_votes)
+
 
     #-------validate total votes row
     # print(total_votes)  
@@ -60,19 +62,17 @@ with open(pypoll_path) as pypoll_csv:
 
 
 #Write to text file
-output_path = "election_result.txt"
+# output_path = os.path.join('Resources',"election_result.txt")
+# file =  open(output_path, 'w') 
 
-file =  open(output_path, 'w') 
+# file.write("Election Results\n")
+# file.write("----------------------------\n")
+# file.write(f"Total total_votes: {total_votes}\n")
+# file.write("----------------------------\n")
+# file.write(f"Charles Casper Stockham: {Canidate_stockham}% ({Stockham})\n")
+# file.write(f"Diana DeGette: {Canidate_degette}% ({DeGette})\n")
+# file.write(f"Raymon Anthony Doane: {Canidate_doane}% ({Doane}) \n")
+# file.write("----------------------------\n")
+# file.write(f"Winner: {winner}\n")
 
-
-file.write("Election Results\n")
-file.write("----------------------------\n")
-file.write(f"Total total_votes: {total_votes}\n")
-file.write("----------------------------\n")
-file.write(f"Charles Casper Stockham: {Canidate_stockham}% ({Stockham})\n")
-file.write(f"Diana DeGette: {Canidate_degette}% ({DeGette})\n")
-file.write(f"Raymon Anthony Doane: {Canidate_doane}% ({Doane}) \n")
-file.write("----------------------------\n")
-file.write(f"Winner: {winner}\n")
-
-file.close()
+# file.close()

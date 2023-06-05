@@ -85,3 +85,20 @@ with open(pybankpath,encoding='utf') as pybank_csv:
 
 #--------------------------------------------
 
+
+#Write to text file
+
+output_path = os.path.join('Resources',"pybank_result.txt")
+
+file =  open(output_path, 'w') 
+
+file.write(f"Financial Analysis\n")
+file.write(f"-----------------------------------\n")
+file.write(f"Total Months: {len(date)}\n")
+file.write(f"Total: $ {sum(prof_loss)}\n")
+file.write(f"Avereage Change: $ {round(avg_pl_change)}\n")
+file.write(f"Greatest Increase in Profits:{ max_pl_change_date}, ${round(max_pl_change)}\n")
+file.write(f"Greatest Decrease in Profits:{ min_pl_change_date}, ${round(min_pl_change)}\n")
+
+
+file.close()
