@@ -58,7 +58,7 @@ with open(pybankpath,encoding='utf') as pybank_csv:
         min_pl_change_date = str(date[pl_change.index(min(pl_change))])
 
 
-    print("Avereage Change: $", round(avg_pl_change))
+    print("Avereage Change: $", round((avg_pl_change),2))
     print("Greatest Increase in Profits:", max_pl_change_date,"($", round(max_pl_change),")")
     print("Greatest Decrease in Profits:", min_pl_change_date,"($", round(min_pl_change),")")
 
@@ -96,9 +96,9 @@ file.write(f"Financial Analysis\n")
 file.write(f"-----------------------------------\n")
 file.write(f"Total Months: {len(date)}\n")
 file.write(f"Total: $ {sum(prof_loss)}\n")
-file.write(f"Avereage Change: $ {round(avg_pl_change)}\n")
+file.write(f"Avereage Change: $ {round((avg_pl_change),2)}\n")
 file.write(f"Greatest Increase in Profits:{ max_pl_change_date}, ${round(max_pl_change)}\n")
 file.write(f"Greatest Decrease in Profits:{ min_pl_change_date}, ${round(min_pl_change)}\n")
-
+file.write("----------------------------\n")
 
 file.close()
